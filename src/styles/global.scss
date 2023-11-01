@@ -1,5 +1,5 @@
-@import './variables.scss';
-@import './layout.scss';
-@import './mixins.scss';
-@import './sk-design-system.scss';
-@import './utilities.scss';
+@forward './variables.scss';
+@forward './layout.scss';
+@forward './mixins.scss';
+@forward './sk-design-system.scss';
+@forward './utilities.scss';

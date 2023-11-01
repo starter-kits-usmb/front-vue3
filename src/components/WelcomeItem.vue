@@ -1,6 +1,6 @@
 <template>
-  <div class="item">
-    <i>
+  <div class="item flex-row">
+    <i class="flex-row middle center">
       <slot name="icon"></slot>
     </i>
     <div class="details">
@@ -15,7 +15,6 @@
 <style scoped>
 .item {
   margin-top: 2rem;
-  display: flex;
   position: relative;
 }
 
@@ -25,9 +24,6 @@
 }
 
 i {
-  display: flex;
-  place-items: center;
-  place-content: center;
   width: 32px;
   height: 32px;
 
