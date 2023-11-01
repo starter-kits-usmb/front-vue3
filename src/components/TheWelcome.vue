@@ -85,4 +85,11 @@ import SupportIcon from './icons/IconSupport.vue'
     us by
     <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
   </WelcomeItem>
+
+  <div class="flex-row">
+    <p>ehey</p>
+    <p>ho</p>
+  </div>
 </template>
+
+<style scoped lang="scss"></style>
