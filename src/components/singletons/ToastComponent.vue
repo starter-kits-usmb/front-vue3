@@ -1,0 +1,134 @@
+<script setup lang="ts">
+import { useToast } from '@/stores/toast'
+import LoadingAnimation from '@/components/singletons/LoadingAnimation.vue'
+const toast = useToast()
+</script>
+
+<template>
+  <div
+    v-show="toast.visible"
+    :class="{
+      visible: toast.visible,
+      error: toast.type == 'error',
+      warning: toast.type == 'warning'
+    }"
+  >
+    {{ toast.message }}
+  </div>
+
+  <section
+    v-if="toast.loading"
+    class="flex-col center middle loading-screen"
+    :class="toast.loadingScreenClass"
+  >
+    <LoadingAnimation class="illustration"></LoadingAnimation>
+    <p v-if="toast.loadingMessage != ''">{{ toast.loadingMessage }}</p>
+    <h3 class="dots-pulse"></h3>
+  </section>
+</template>
+
+<style lang="scss" scoped>
+div {
+  position: fixed;
+  transform: translateX(130%);
+  display: none;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  min-width: 80px;
+  max-width: 400px;
+  background-color: $green;
+  color: $background;
+  border-radius: 1rem;
+  &.error {
+    background-color: $red;
+    color: $background;
+  }
+  &.warning {
+    background-color: $yellow;
+    color: $text1;
+  }
+  &.visible {
+    display: block;
+    animation: slide-in-then-vanish 2.5s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes slide-in-then-vanish {
+    0% {
+      transform: translateX(130%);
+    }
+    10% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $background;
+  z-index: 1000;
+  opacity: 0;
+  animation: fade-in 0.5s ease 0.5s forwards;
+  pointer-events: none;
+  gap: 0;
+  app-loading {
+    width: 80%;
+    max-width: 700px;
+  }
+  p {
+    text-align: center;
+  }
+  .illustration {
+    height: 80%;
+  }
+  &.fade-out {
+    animation: fade-out 0.3s ease forwards;
+  }
+
+  .dots-pulse:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    animation: ellipsis steps(4, end) 2000ms infinite;
+    content: '\2026';
+    /* ascii code for the ellipsis character */
+    width: 0px;
+    font-size: 2rem;
+  }
+
+  @keyframes ellipsis {
+    to {
+      width: 1.5ch;
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      pointer-events: inherit;
+      opacity: 0;
+    }
+    100% {
+      pointer-events: inherit;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      pointer-events: inherit;
+      opacity: 1;
+    }
+    100% {
+      pointer-events: none;
+      opacity: 0;
+    }
+  }
+}
+</style>

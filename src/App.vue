@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import './index.scss'
+import ToastComponent from './components/singletons/ToastComponent.vue'
 </script>
 
 <template>
@@ -19,6 +20,7 @@ import './index.scss'
   </header>
 
   <RouterView />
+  <ToastComponent></ToastComponent>
 </template>
 
 <style scoped lang="scss">
