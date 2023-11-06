@@ -15,6 +15,7 @@ import ToastComponent from './components/singletons/ToastComponent.vue'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/starter-kit">Starter-kit</RouterLink>
       </nav>
     </div>
   </header>

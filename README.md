@@ -22,7 +22,7 @@ This template should help get you started developing with Vue 3 in Vite. It incl
 ### Build
 
 ```sh
-npm run build
+docker compose up -d --build
 ```
 
 ## linter and prettier

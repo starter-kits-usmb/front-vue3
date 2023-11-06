@@ -507,7 +507,7 @@
   </svg>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 svg {
   height: 100%;
   width: fit-content;

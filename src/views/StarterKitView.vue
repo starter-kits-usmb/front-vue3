@@ -64,11 +64,6 @@ function openConfirmModal() {
           <textarea class="basic" placeholder="basic textarea"></textarea>
         </div>
       </section>
-      <!-- Custom layout classes -->
-      <section class="flex-col center top">
-        <h2>Custom layout classes</h2>
-        <img src="assets/illustrations/demo_layout.svg" alt="" />
-      </section>
 
       <section class="flex-col center top">
         <!-- Authentification -->
