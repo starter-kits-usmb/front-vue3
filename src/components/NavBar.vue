@@ -10,7 +10,7 @@ const phoneMenuOpen = ref(false)
     <!-- Logo -->
     <div>
       <router-link to="/" class="logo" @click="phoneMenuOpen = false">
-        <img src="assets/icons/logo.svg" alt="logo" />
+        <img src="@/assets/icons/logo.svg" alt="logo" />
       </router-link>
     </div>
 
