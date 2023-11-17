@@ -69,8 +69,8 @@ function openConfirmModal() {
         <!-- Authentification -->
         <h2>Authentification</h2>
         <p>
-          An authentification service in core/services, ready to be linked with your backend. See
-          the README.
+          An authentification store in /stores, ready to be linked with your backend. See the
+          README.
         </p>
       </section>
     </div>
