@@ -12,7 +12,9 @@ import { useModalStore } from './stores/modal'
     <NavBar></NavBar>
   </Suspense>
 
-  <RouterView />
+  <Suspense>
+    <RouterView />
+  </Suspense>
   <ToastComponent></ToastComponent>
   <ModalInjector class="modals"></ModalInjector>
 </template>

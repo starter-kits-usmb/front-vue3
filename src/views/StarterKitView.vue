@@ -61,7 +61,7 @@ function openConfirmModal() {
       <!-- Light Design system -->
       <section class="flex-col center top">
         <h2>Light design system</h2>
-        <div class="flex-row wrap">
+        <div class="flex-row wrap top">
           <button class="basic">button basic</button>
           <button class="primary">button primary</button>
           <button class="success">button success</button>

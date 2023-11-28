@@ -21,6 +21,16 @@ const router = createRouter({
       path: '/starter-kit',
       name: 'starter-kit',
       component: () => import('../views/StarterKitView.vue')
+    },
+    {
+      path: '/auth/login',
+      name: 'login',
+      component: () => import('../views/auth/LoginView.vue')
+    },
+    {
+      path: '/auth/register',
+      name: 'register',
+      component: () => import('../views/auth/RegisterView.vue')
     }
   ]
 })
