@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { useToast } from '@/stores/toast'
-import type { ToastLevel } from '../models/toast-level'
+import { ToastLevel } from '../models/toast-level'
+import { useModalStore } from '../stores/modal'
+import type { ModalPayload } from '../models/modal/modal-payload'
 const toastStore = useToast()
+const modalStore = useModalStore()
 
 function showNotification(level: string) {
   console.log('showNotification of', level, 'called')
@@ -15,11 +18,20 @@ function showLoadingScreen() {
   }, 5000)
 }
 
-function openModal() {
-  //TODO
-}
 function openConfirmModal() {
-  //TODO
+  modalStore.open({
+    title: 'Confirm action',
+    message: 'Are you sure you want to do that ?',
+    confirmText: 'Confirm',
+    cancelText: 'Cancel',
+    onConfirm: async (payload: ModalPayload) => {
+      toastStore.Show('Modal confirmed', ToastLevel.Success)
+    },
+    onCancel: async (payload: ModalPayload) => {
+      console.log('Modal canceled')
+      toastStore.Show('Modal canceled', ToastLevel.Warning)
+    }
+  })
 }
 </script>
 <template>
@@ -39,7 +51,6 @@ function openConfirmModal() {
           <button class="danger" @click="showNotification('error')">
             Show an error notification
           </button>
-          <button class="basic" @click="openModal()">Show a modal</button>
           <button class="basic" @click="openConfirmModal()">Show a confirm modal</button>
           <button class="primary" @click="showLoadingScreen()">
             Show a loading screen for 5 seconds
