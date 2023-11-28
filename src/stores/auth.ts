@@ -1,18 +1,22 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { env } from '../env'
 
-export const useAuthStore = defineStore('auth', async () => {
+export const useAuthStore = defineStore('auth', () => {
   const token = ref('')
   const connected = ref(false)
+
+  const API = env.API_URL
 
   function setupFromLocalStorage() {
     token.value = localStorage.getItem('token') || ''
     connected.value = !!token.value
+    console.log('setupFromLocalStorage', token.value, connected.value)
   }
 
   async function isTokenValid() {
     try {
-      const response = await fetch('/auth', {
+      const response = await fetch(API + '/auth', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token.value}`,
@@ -31,36 +35,30 @@ export const useAuthStore = defineStore('auth', async () => {
   }
 
   async function login(login: string, password: string) {
-    try {
-      const response = await fetch('/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ login, password })
-      })
+    const response = await fetch(API + '/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ login, password })
+    })
 
-      if (response.ok) {
-        const data = await response.json()
-        if (data.token) {
-          token.value = data.token
-          localStorage.setItem('token', data.token)
-          connected.value = true
-          return true
-        } else {
-          return false
-        }
-      } else {
-        return false
+    if (response.ok) {
+      const data = await response.json()
+      if (data.token) {
+        token.value = data.token
+        localStorage.setItem('token', data.token)
+        connected.value = true
+        return true
       }
-    } catch (error) {
-      return false
     }
+
+    return false
   }
 
   async function register(login: string, password: string) {
     try {
-      const response = await fetch('/auth/register', {
+      const response = await fetch(API + '/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

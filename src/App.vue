@@ -4,7 +4,6 @@ import './index.scss'
 import ToastComponent from './components/singletons/ToastComponent.vue'
 import NavBar from './components/NavBar.vue'
 import ModalInjector from './components/ModalInjector.vue'
-import { useModalStore } from './stores/modal'
 </script>
 
 <template>
@@ -12,9 +11,7 @@ import { useModalStore } from './stores/modal'
     <NavBar></NavBar>
   </Suspense>
 
-  <Suspense>
-    <RouterView />
-  </Suspense>
+  <RouterView />
   <ToastComponent></ToastComponent>
   <ModalInjector class="modals"></ModalInjector>
 </template>

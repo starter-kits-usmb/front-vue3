@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import router from '../../router'
 
-const authStore = await useAuthStore()
+const authStore = useAuthStore()
 
 const form = ref({
   login: '',
@@ -19,7 +19,7 @@ const errorMessage = ref('')
 async function onSubmitForm() {
   authStore.login(form.value.login, form.value.password).then((loggedIn: boolean) => {
     if (loggedIn) {
-      router.push('/home')
+      router.push('/')
     } else {
       errorMessage.value = 'Invalid credentials'
     }
@@ -29,7 +29,7 @@ async function onSubmitForm() {
 
 <template>
   <div class="main-container flex-row middle center">
-    <form class="flex-col center middle">
+    <form class="flex-col center middle" @submit.prevent="onSubmitForm()">
       <h1>Login</h1>
       <input
         type="text"
@@ -46,9 +46,7 @@ async function onSubmitForm() {
         placeholder="Password"
       />
       <p v-if="errorMessage.length > 0" class="error-message">{{ errorMessage }}</p>
-      <button type="submit" @click="onSubmitForm()" class="primary" :disabled="!validForm">
-        Submit
-      </button>
+      <button type="submit" class="primary" :disabled="!validForm">Submit</button>
     </form>
     <img class="illustration" src="@/assets/illustrations/auth.svg" alt="login illustration" />
   </div>

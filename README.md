@@ -5,10 +5,10 @@ This template should help get you started developing with Vue 3 in Vite. It incl
 - [x] Scalable folder structure
 - [x] Linter and prettier
 - [x] Routing and lazy loading
-- [ ] Authentication store
+- [x] Authentication store
 - [x] Light design system and layout utilities (css class based)
 - [x] Toast store (snackbar and loading screen)
-- [ ] Modal store (support custom modals)
+- [x] Modal store (do NOT support custom modals, feel free to contribute on that)
 - [x] Test setup
 
 ## Start from this template
