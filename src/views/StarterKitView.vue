@@ -76,6 +76,11 @@ function openConfirmModal() {
         </div>
       </section>
 
+      <!-- Custom layout classes -->
+      <section class="flex-col center top">
+        <h2>Custom layout classes</h2>
+        <img src="@/assets/illustrations/demo_layout.svg" alt="" />
+      </section>
       <section class="flex-col center top">
         <!-- Authentification -->
         <h2>Authentification</h2>
@@ -87,4 +92,27 @@ function openConfirmModal() {
     </div>
   </div>
 </template>
-<style lang=""></style>
+<style lang="scss">
+h1 {
+  text-align: center;
+}
+
+pre {
+  background-color: $text1;
+  color: $background;
+  padding: 0.5rem;
+}
+
+img {
+  width: 100%;
+}
+
+section {
+  width: calc(100% - 2rem);
+  box-shadow: $shadow;
+  border-radius: $radius;
+  background: $background-light;
+  padding: 1rem;
+  border: solid 2px $text1-07;
+}
+</style>
